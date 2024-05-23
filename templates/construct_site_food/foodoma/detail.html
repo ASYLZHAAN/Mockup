@@ -1,0 +1,201 @@
+<html lang="en" class="" style="">
+   <head>
+      {% load static %}
+      {% load food_tags %}
+	   <title></title>
+	   <meta charset="utf-8">
+	   <meta http-equiv="cache-control" content="no-cache">
+	   <meta http-equiv="expires" content="0">
+	   <meta http-equiv="pragma" content="no-cache">
+	   <meta name="theme-color" content="#fff">
+	   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/construct_site_food/main.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/construct_site_food/style.css' %}">
+       <style>
+           .preview {
+                padding: 20px;
+                border-radius: 8px;
+                font-size: 34px; /* Можно увеличить для большей наглядности */
+                font-family: 'Kudry Weird Headline', cursive; /* Элегантный курсивный шрифт */
+                text-align: center;
+                color: #D4AF37; /* Золотой цвет */
+                font-weight: bold; /* Жирный текст для лучшей видимости */
+                margin: 20px;
+                transition: color 0.3s, text-shadow 0.3s; /* Плавные переходы для цвета и тени */
+                text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Тень для добавления глубины */
+            }
+
+            .preview.silver {
+                color: #C0C0C0; /* Серебряный цвет */
+                text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5); /* Более светлая тень для серебра */
+            }
+
+            /* Добавим эффект свечения для подчеркивания роскоши */
+            .preview.gold {
+                color: #FFD700; /* Насыщенный золотой цвет */
+                text-shadow: 1px 1px 10px #FFD700; /* Свечение золота */
+            }
+           .block-content {
+    font-family: 'Arial', sans-serif; /* Выбор шрифта */
+    color: #333; /* Цвет текста */
+    background-color: #fff; /* Цвет фона */
+    max-width: 600px; /* Максимальная ширина блока */
+    margin: 20px auto; /* Центрирование блока */
+    padding: 20px; /* Отступы внутри блока */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для блока */
+}
+
+h2.item-text {
+    text-align: center; /* Центрирование заголовка */
+    color: #000; /* Цвет заголовка */
+    margin-bottom: 20px; /* Отступ после заголовка */
+}
+
+.cart-item-meta {
+    display: flex; /* Включение flexbox */
+    align-items: center; /* Центрирование элементов по вертикали */
+    padding: 15px 0; /* Вертикальные отступы */
+}
+
+.cart-item-name {
+    flex-grow: 1; /* Элемент занимает всё доступное пространство */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+.cart-item-name label,
+.cart-item-name input,
+.cart-item-name select {
+    display: block; /* Элементы на новой строке */
+    width: 100%; /* Ширина элементов на 100% */
+    margin: 5px 0; /* Отступы между элементами */
+}
+
+input[type="text"],
+select {
+    padding: 8px; /* Отступы внутри поля ввода и селектора */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 4px; /* Скругление углов */
+}
+
+#preview {
+    padding: 20px; /* Отступы внутри блока предварительного просмотра */
+    border: 1px solid #ccc; /* Граница блока */
+    border-radius: 4px; /* Скругление углов блока */
+    text-align: center; /* Центрирование текста */
+    font-style: italic; /* Курсивный стиль текста */
+    background-color: #f9f9f9; /* Светлый фон для блока */
+}
+
+
+       </style>
+	</head>
+   <body cz-shortcut-listen="true" class="bg-grey">
+      <div id="page-container">
+         <div id="root">
+            {% csrf_token %}
+            <span>
+               <div>
+                  <div class="col-12 p-0 fixed" style="z-index: 9;">
+                     <div class="block m-0">
+                        <div class="block-content p-0 undefined">
+                           <div class="input-group search-box">
+                              <div class="input-group-prepend">
+                                 <a href="" class="btn search-navs-btns undefined" style="padding-top: 18px;">
+                                    <svg class="arrow-right-3" viewBox="0 0 5 9">
+                                        <path d="M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z" />
+                                    </svg>
+                                 </a>
+                              </div>
+                              <p class="form-control search-input d-flex align-items-center undefined"><span class="nav-page-title">Предварительный просмотр</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="pt-50 bg-white">
+
+                  </div>
+                  <div class="p-15">
+                     <div class="block-content block-content-full bg-white pt-10 pb-5">
+                        <h2 class="item-text mb-10">Предварительный просмотр</h2>
+                              <div class="cart-item-meta pt-15 pb-15 align-items-center quantity-content">
+                                 <div class="cart-item-name">
+                                    <span class="false">
+                                       <strong>{{good.title}}</strong>
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="cart-item-meta pt-15 pb-15 align-items-center quantity-content">
+                                 <div class="cart-item-name">
+                                    <span class="false">
+                                       <label for="nameInput">Текст для отображение:</label>
+                                    <input type="text" id="nameInput" placeholder="Введите имя">
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="cart-item-meta pt-15 pb-15 align-items-center quantity-content">
+                                 <div class="cart-item-name">
+                                    <span class="false">
+                                       <label for="materialSelector">Выберите материал:</label>
+                                           <select id="materialSelector">
+                                               <option value="gold">Золото</option>
+                                               <option value="silver">Серебро</option>
+                                           </select>
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="cart-item-meta pt-15 pb-15 align-items-center quantity-content">
+                                 <div class="cart-item-name">
+                                    <span class="false">
+                                       <input type="hidden" value="{{good.font}}" id="fontSelector">
+                                    </span>
+                                 </div>
+                              </div>
+
+                        <div class="cart-item-meta pt-15 pb-15 align-items-center quantity-content">
+                                 <div class="cart-item-name">
+                                    <span class="false">
+                                       <div id="preview" class="preview">
+                                         Предпросмотр будет здесь
+                                     </div>
+                                    </span>
+                                 </div>
+                              </div>
+                  </div>
+               </div>
+            </span>
+         </div>
+      </div>
+   </body>
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+   <script src="{% static 'js/js.cookie.min.js' %}"></script>
+   <script src="{% static 'js/cart.js' %}"></script>
+   <script>
+       $(document).ready(function() {
+            $('#nameInput, #materialSelector, #fontSelector').on('change input', function() {
+                var name = $('#nameInput').val();
+                var material = $('#materialSelector').val();
+                var font = $('#fontSelector').val();
+
+                var previewArea = $('#preview');
+
+                if (material === 'silver') {
+                    previewArea.addClass('silver');
+                } else {
+                    previewArea.removeClass('silver');
+                }
+
+                previewArea.css({
+                    'font-family': font,
+                });
+                previewArea.text(name || "Предпросмотр будет здесь");
+            });
+        });
+
+
+
+   </script>
+   <script type="text/javascript">
+
+
+   </script>
+</html>

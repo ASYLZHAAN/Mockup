@@ -25,7 +25,7 @@
                     </button>
                   </div>
                 {% endif %}
-                <h3>Вход в gosite</h3>
+                <h3>Вход в Mockup</h3>
                 <form action="{% url 'login' %}" method="post" class="pt-3">
                   {% csrf_token %}
                   <input type="hidden" name="next" value="{{ next }}" />

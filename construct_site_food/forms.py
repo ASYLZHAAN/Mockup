@@ -11,5 +11,5 @@ class GoodForm(forms.ModelForm):
         model = Good
         fields = (
             'title', 'price', 'old_price', 'photo',
-            'category', 'description'
+            'category', 'description', 'font'
         )

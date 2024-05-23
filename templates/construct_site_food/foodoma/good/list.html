@@ -12,7 +12,9 @@
                <div class="my-2">
                   <div class="px-5 text-left recommended-v2-ellipsis-meta">
                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="meta-name">{{good.title|safe}}</span>
+                        <a href="{% url 'construct_site_food:good_detail' good.id %} ">
+                           <span class="meta-name">{{good.title|safe}}</span>
+                        </a>
                      </div>
                   </div>
                   <div class="ml-2">

@@ -30,6 +30,9 @@ urlpatterns = [
 		name='order_good'),
 	path('good/list/<slug:slug>/<int:category>/',
 		views.GoodListView.as_view(), name='good_list'),
+	path('good/detail/<int:product_id>/',
+		 views.ProductDetailView.as_view(), name='good_detail'),
+
 	
 ]
 

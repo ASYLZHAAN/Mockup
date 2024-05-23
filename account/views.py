@@ -22,7 +22,7 @@ class UrlMixin:
 class SiteMixinView(View):
 
     def dispatch(self, *args, **kwargs):
-        slug = 'fload'
+        slug = 'food'
         self.site = get_object_or_404(Site, slug=slug)
         return super().dispatch(*args, **kwargs)
 

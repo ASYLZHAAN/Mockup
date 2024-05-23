@@ -306,3 +306,11 @@ class GoodListView(GoodMixin, ListView):
             qs = qs.filter(category=category)
         return qs
 
+class ProductDetailView(TemplateResponseMixin, View):
+    template_name = 'construct_site_food/foodoma/detail.html'
+
+    def get(self, request, *args, **kwargs):
+        product_id = self.kwargs.get('product_id')
+        good = Good.objects.get(id=product_id)
+        return self.render_to_response({'good': good})
+

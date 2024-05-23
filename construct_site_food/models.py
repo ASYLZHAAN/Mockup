@@ -28,6 +28,21 @@ class Category(BaseMixin):
 
 #Список товаров
 class Good(BaseMixin):
+    FONT_CHOICES = (
+        ('Arial', 'Arial'),
+        ('Verdana', 'Verdana'),
+        ('Kudry', 'Kudry'),
+        ('Scriptina', 'Scriptina'),
+        ('Edwardian Script', 'Edwardian Script'),
+        ('Great Vibes', 'Great Vibes'),
+        ('Alex Brush', 'Alex Brush'),
+        ('Snell Roundhand', 'Snell Roundhand'),
+        ('Monotype Corsiva', 'Monotype Corsiva'),
+        ('Pinyon Script', 'Pinyon Script'),
+        ('Satisfy', 'Satisfy'),
+        ('Tangerine', 'Tangerine'),
+        ('Allura', 'Allura'),
+    )
     title = models.CharField(max_length=120, null=True, blank=True)
     description = models.TextField(blank=True)
     price = models.CharField(max_length=120, blank=True, default='')
@@ -42,3 +57,9 @@ class Good(BaseMixin):
     	UserSite, on_delete=models.CASCADE,
     	related_name='good_user_sites', null=True, blank=True)
     sorting = models.IntegerField(default=0)
+    font = models.CharField(
+        max_length=100,
+        choices=FONT_CHOICES,
+        default='AR',  # Установить стандартное значение, если требуется
+        blank=True
+    )
